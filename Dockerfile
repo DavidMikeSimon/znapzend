@@ -1,6 +1,7 @@
+ARG PERL_BUILD_VERSION=5.30-buster
+ARG UBUNTU_VERSION=23.04
 
 ##### Builder image
-ARG PERL_BUILD_VERSION=5.30-buster
 FROM docker.io/library/perl:${PERL_BUILD_VERSION} as builder
 
 WORKDIR /usr/local/src
@@ -14,7 +15,6 @@ RUN \
   make install
 
 ##### Runtime image
-ARG UBUNTU_VERSION=23.04
 FROM docker.io/library/ubuntu:${UBUNTU_VERSION} as runtime
 
 RUN \
